@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const MovieDetailsInfo = ({ url, tag, title, score, overview, genres }) => {
   const src = `https://www.themoviedb.org/t/p/w300${url}`;
