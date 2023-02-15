@@ -5,7 +5,7 @@ const MoviesSearchForm = ({ onSubmit }) => {
 
   const handleChange = ({ target }) => {
     const { value } = target;
-    setSearch(value);
+    setSearch(value.trim());
   };
 
   const handleFormSubmit = e => {
