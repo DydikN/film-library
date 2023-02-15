@@ -1,4 +1,10 @@
-import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import {
+  useParams,
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { getMovieDetails } from 'api/films';
@@ -10,8 +16,15 @@ const MovieDetails = () => {
 
   const { movieId } = useParams();
 
+  const navigate = useNavigate();
+
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+
+  const from = location.state?.from || '/';
+
+  const goBack = () => {
+    navigate(from);
+  };
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -58,6 +71,8 @@ const MovieDetails = () => {
     <div>
       {loading && <p>...loading</p>}
       {error && <p>{error}</p>}
+      <button onClick={goBack}>Go back</button>
+
       <img
         src={
           poster_path
@@ -67,7 +82,7 @@ const MovieDetails = () => {
         alt={title}
       />
       <h1>
-        {title} ({release_date.slice(0, 4)})
+        {title} ({String(release_date).slice(0, 4)})
       </h1>
       <p>
         Vote / Votes: {Number(vote_average).toFixed(1)} / {vote}
@@ -79,10 +94,14 @@ const MovieDetails = () => {
       <p>Aditional information</p>
       <ul>
         <li>
-          <Link to={`cast`}>Cast</Link>
+          <Link state={{ from }} to="cast">
+            Cast
+          </Link>
         </li>
         <li>
-          <Link to={`reviews`}>Reviews</Link>
+          <Link state={{ from }} to="reviews">
+            Reviews
+          </Link>
         </li>
       </ul>
 
