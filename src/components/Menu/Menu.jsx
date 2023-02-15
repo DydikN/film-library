@@ -1,18 +1,17 @@
-import { NavLink } from 'react-router-dom';
-
-// import styles from './menu.module.css';
-import items from './items';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const Menu = () => {
-  const elements = items.map(({ id, to, text }) => (
-    <li key={id}>
-      <NavLink to={to}>{text}</NavLink>
-    </li>
-  ));
-
   return (
     <div>
-      <ul>{elements}</ul>
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/movies">Movies</NavLink>
+        </li>
+      </ul>
+      <Outlet />
     </div>
   );
 };

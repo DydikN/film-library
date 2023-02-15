@@ -1,9 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import { getMovieReviews } from 'components/api/films';
-
-import MovieDetailsReviewsList from './MovieDetailsReviewsList/MovieDetailsReviewsList';
+import { getMovieReviews } from 'api/films';
 
 const MovieDetailsReviews = () => {
   const [items, setItems] = useState([]);
@@ -16,7 +14,6 @@ const MovieDetailsReviews = () => {
       try {
         setLoading(true);
         const { results } = await getMovieReviews(movieId);
-        console.log(results);
         setItems(results);
       } catch (error) {
         setError(error);
@@ -28,11 +25,27 @@ const MovieDetailsReviews = () => {
     fetchMovies();
   }, [movieId]);
 
+  const elements = items.map(element => {
+    const { id, author, created_at, content } = element;
+    return (
+      <li key={id}>
+        <p>
+          {created_at.slice(0, 10)} | "{author}"
+        </p>
+        <p>{content}</p>
+      </li>
+    );
+  });
+
   return (
     <div>
       {loading && <p>...loading</p>}
       {error && <p>{error.message}</p>}
-      <MovieDetailsReviewsList items={items} />
+      {items.length > 0 ? (
+        <ul>{elements}</ul>
+      ) : (
+        <p>We dont have any reviews for this movie</p>
+      )}
     </div>
   );
 };
