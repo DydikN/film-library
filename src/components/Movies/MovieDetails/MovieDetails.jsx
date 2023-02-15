@@ -28,6 +28,9 @@ const MovieDetails = () => {
 
   return (
     <div>
+      {loading && <p>...loading</p>}
+      {error && <p>{error.message}</p>}
+
       <MovieDetailsInfo
         url={item.poster_path}
         tag={item.title}

@@ -28,7 +28,13 @@ const MovieDetailsReviews = () => {
     fetchMovies();
   }, [movieId]);
 
-  return <MovieDetailsReviewsList items={items} />;
+  return (
+    <div>
+      {loading && <p>...loading</p>}
+      {error && <p>{error.message}</p>}
+      <MovieDetailsReviewsList items={items} />
+    </div>
+  );
 };
 
 export default MovieDetailsReviews;

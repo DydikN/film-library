@@ -27,6 +27,8 @@ const MovieDetailsCast = () => {
   }, [movieId]);
   return (
     <div>
+      {loading && <p>...loading</p>}
+      {error && <p>{error.message}</p>}
       <MovieDetailsCastList items={items} />
     </div>
   );
