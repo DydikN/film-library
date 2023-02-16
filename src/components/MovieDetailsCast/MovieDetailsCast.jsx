@@ -26,9 +26,9 @@ const MovieDetailsCast = () => {
   }, [movieId]);
 
   const elements = items.map(element => {
-    const { id, profile_path, name, character } = element;
+    const { cast_id, profile_path, name, character } = element;
     return (
-      <li key={id}>
+      <li key={cast_id}>
         <img
           src={
             profile_path
