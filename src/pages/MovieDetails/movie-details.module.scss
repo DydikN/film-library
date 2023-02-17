@@ -1,9 +1,7 @@
 .container {
   display: flex;
-  /* flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 20px; */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .image {
@@ -60,13 +58,17 @@
 
 .activeLink {
   composes: link;
-  color: orange;
+  color: #ff6b08;
+}
+
+.buttton__wrapper {
+  padding: 20px;
 }
 
 .button {
   cursor: pointer;
   color: aliceblue;
-  background-color: orange;
+  background-color: #ff6b08;
   border-radius: 5%;
   padding: 5px;
   border-style: hidden;

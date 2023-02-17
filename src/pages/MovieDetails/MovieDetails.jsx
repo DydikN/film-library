@@ -51,10 +51,12 @@ const MovieDetails = () => {
     <div>
       {loading && <Loader />}
       {error && <p>{error}</p>}
-      <button type="button" className={styles.button} onClick={goBack}>
-        GoBack
-      </button>
       <div>
+        <div className={styles.buttton__wrapper}>
+          <button type="button" className={styles.button} onClick={goBack}>
+            GoBack
+          </button>
+        </div>
         <div className={styles.container}>
           <img
             className={styles.image}
@@ -89,7 +91,6 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
-      <p>Aditional information</p>
       <ul>
         <li>
           <NavLink

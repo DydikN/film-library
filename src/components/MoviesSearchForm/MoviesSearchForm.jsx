@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './movie-search-form.module.scss';
 import PropTypes from 'prop-types';
 
 const MoviesSearchForm = ({ onSubmit }) => {
@@ -16,16 +17,21 @@ const MoviesSearchForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <input
-        name="search"
-        value={search}
-        onChange={handleChange}
-        type="text"
-        required
-      />
-      <button type="submit">Search</button>
-    </form>
+    <div className={styles.searchbar}>
+      <form onSubmit={handleFormSubmit} className={styles.searchForm}>
+        <input
+          className={styles.searchFormInput}
+          name="search"
+          value={search}
+          onChange={handleChange}
+          type="text"
+          required
+        />
+        <button className={styles.searchFormButton} type="submit">
+          Search
+        </button>
+      </form>
+    </div>
   );
 };
 export default MoviesSearchForm;

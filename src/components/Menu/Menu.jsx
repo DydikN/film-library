@@ -38,7 +38,7 @@ const Menu = () => {
           </nav>
         </div>
       </header>
-      ; <Outlet />
+      <Outlet />
     </div>
   );
 };
