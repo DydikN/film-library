@@ -25,6 +25,7 @@ const MoviesSearchForm = ({ onSubmit }) => {
           value={search}
           onChange={handleChange}
           type="text"
+          placeholder="Movie search"
           required
         />
         <button className={styles.searchFormButton} type="submit">

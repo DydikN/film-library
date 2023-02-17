@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
 import Loader from './Loader/Loader';
-import styles from './app.module.scss';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
@@ -19,7 +18,7 @@ const Menu = lazy(() => import('./Menu/Menu'));
 
 function App() {
   return (
-    <div className={styles.wrapper}>
+    <div>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Menu />}>
