@@ -4,6 +4,8 @@ import { getMovies } from 'api/films';
 import MoviesList from 'components/MoviesList/MoviesList';
 import Loader from 'components/Loader/Loader';
 
+import styles from './home-page.module.scss';
+
 const HomePage = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -28,7 +30,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>Trending today</h1>
+      <h1 className={styles.title}>Trending today</h1>
       {loading && <Loader />}
 
       {error && <p>{error.message}</p>}
