@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { getSearchMovie } from 'api/films';
+import Loader from 'components/Loader/Loader';
 
 import MoviesSearchForm from 'components/MoviesSearchForm/MoviesSearchForm';
 import MoviesList from 'components/MoviesList/MoviesList';
@@ -38,7 +39,7 @@ const MoviesPage = () => {
   return (
     <div>
       <MoviesSearchForm onSubmit={handleChangeSearch} />
-      {loading && <p>...loading</p>}
+      {loading && <Loader />}
       {error && error.message}
       {items.length > 0 && <MoviesList items={items} />}
     </div>

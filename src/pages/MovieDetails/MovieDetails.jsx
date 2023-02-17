@@ -1,11 +1,14 @@
 import {
   useParams,
-  Link,
+  NavLink,
   Outlet,
   useLocation,
   useNavigate,
 } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+
+import Loader from 'components/Loader/Loader';
+import styles from './movie-details.module.scss';
 
 import { getMovieDetails } from 'api/films';
 
@@ -41,66 +44,74 @@ const MovieDetails = () => {
     fetchMovies();
   }, [movieId]);
 
-  const {
-    poster_path,
-    title,
-    vote_average,
-    vote_count,
-    genres,
-    overview,
-    release_date,
-  } = movieInfo;
-
-  let vote;
-  if (vote_average) {
-    vote = Math.round(vote_count);
-    let xVC = String(vote);
-    let sVC = xVC.split('');
-    let indexVC = xVC.length - 1;
-    let wVC = Math.floor(indexVC / 3);
-    for (let i = 1; i <= wVC; i += 1) {
-      indexVC = indexVC - 1 - i;
-      sVC.splice(indexVC, 0, ' ');
-      let rVC = sVC.join('');
-      vote = rVC;
-    }
-  }
+  const { poster_path, title, vote_average, genres, overview, name } =
+    movieInfo;
 
   return (
     <div>
-      {loading && <p>...loading</p>}
+      {loading && <Loader />}
       {error && <p>{error}</p>}
-      <button onClick={goBack}>Go back</button>
+      <button type="button" className={styles.button} onClick={goBack}>
+        GoBack
+      </button>
+      <div>
+        <div className={styles.container}>
+          <img
+            className={styles.image}
+            src={
+              poster_path
+                ? `https://image.tmdb.org/t/p/w300${poster_path}`
+                : 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/No_photo_available.svg/800px-No_photo_available.svg.png'
+            }
+            alt={title || name}
+            widht="300"
+            height="450"
+          />
 
-      <img
-        src={
-          poster_path
-            ? `https://image.tmdb.org/t/p/w300${poster_path}`
-            : 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/No_photo_available.svg/800px-No_photo_available.svg.png'
-        }
-        alt={title}
-      />
-      <h1>
-        {title} ({String(release_date).slice(0, 4)})
-      </h1>
-      <p>
-        Vote / Votes: {Number(vote_average).toFixed(1)} / {vote}
-      </p>
-      <h2>Overview</h2>
-      <p>{overview}</p>
-      <h3>Genres</h3>
-      {genres && genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
+          <div className={styles.box}>
+            <h2 className={styles.title}>{title || name} </h2>
+            <p className={styles.rating}>
+              User Score:
+              <span className={styles.descr}>
+                {Number(vote_average).toFixed(1)}
+              </span>
+            </p>
+            <p className={styles.subtitle}>
+              Overview:
+              <span className={styles.descr}>{overview}</span>
+            </p>
+            <p className={styles.subtitle}>
+              Genres:
+              <span className={styles.genres}>
+                {genres && genres.map(genre => genre.name).join(' / ')}
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
       <p>Aditional information</p>
       <ul>
         <li>
-          <Link state={{ from }} to="cast">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles.activeLink : styles.link
+            }
+            state={{ from }}
+            to="cast"
+          >
             Cast
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link state={{ from }} to="reviews">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles.activeLink : styles.link
+            }
+            state={{ from }}
+            to="reviews"
+          >
             Reviews
-          </Link>
+          </NavLink>
         </li>
       </ul>
 

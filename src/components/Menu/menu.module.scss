@@ -1,0 +1,110 @@
+.box-loading {
+  height: calc(100vh - 180px);
+}
+
+.header {
+  padding: 40px 0 40px;
+
+  background-color: rgba($color: #000000, $alpha: 0.56);
+  background-image: url('../../images/bg_header_home_mobile.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @media (min-device-pixel-ration: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('../../images/bg_header_home_mobile@2.jpg');
+  }
+
+  @media screen and (min-width: 768px) {
+    background-color: rgba($color: #000000, $alpha: 0.56);
+    background-image: url('../../images/bg_header_home_tablet.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @media (min-device-pixel-ration: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../../images/bg_header_home_tablet@2.jpg');
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-color: rgba($color: #000000, $alpha: 0.56);
+    background-image: url('../../images/bg_header_home_descktop.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @media (min-device-pixel-ration: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../../images/bg_header_home_descktop@2.jpg');
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+
+  width: 100%;
+
+  @media screen and (min-width: 320px) {
+    width: 320px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 0 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+  }
+}
+
+.nav {
+  display: flex;
+  //   justify-content: center;
+  justify-content: space-between;
+
+  font-weight: 500;
+  line-height: 1.167;
+
+  margin-bottom: 54px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 39px;
+    align-items: center;
+    padding-top: 4px;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    color: #ffffff;
+  }
+
+  &__link--current {
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      height: 3px;
+      display: flex;
+      background-color: #ff6b08;
+    }
+  }
+}

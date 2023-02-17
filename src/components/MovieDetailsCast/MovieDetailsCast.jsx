@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Loader from 'components/Loader/Loader';
 
 import { getMovieCredits } from 'api/films';
+
+import styles from './movie-details-cast.module.scss';
 
 const MovieDetailsCast = () => {
   const [items, setItems] = useState([]);
@@ -28,7 +31,7 @@ const MovieDetailsCast = () => {
   const elements = items.map(element => {
     const { cast_id, profile_path, name, character } = element;
     return (
-      <li key={cast_id}>
+      <li key={cast_id} className={styles.box__cast}>
         <img
           src={
             profile_path
@@ -36,10 +39,11 @@ const MovieDetailsCast = () => {
               : 'https://t4.ftcdn.net/jpg/00/65/10/47/360_F_65104718_x17a76wzWKIm3BlhA6uyYVkDs9982c6q.jpg'
           }
           alt={name}
+          className={styles.cast__img}
         />
-        <h2>{name}</h2>
+        <h2 className={styles.cast__title}>{name}</h2>
         <p>
-          <span>Character: </span>
+          <span className={styles.cast__span}>Character: </span>
           {character}
         </p>
       </li>
@@ -48,9 +52,9 @@ const MovieDetailsCast = () => {
 
   return (
     <div>
-      {loading && <p>...loading</p>}
+      {loading && <Loader />}
       {error && <p>{error.message}</p>}
-      <ul>{elements}</ul>
+      <ul className={styles.cast__box__wrapper}>{elements}</ul>
     </div>
   );
 };

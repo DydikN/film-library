@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getMovies } from 'api/films';
 
 import MoviesList from 'components/MoviesList/MoviesList';
+import Loader from 'components/Loader/Loader';
 
 const HomePage = () => {
   const [items, setItems] = useState([]);
@@ -28,9 +29,11 @@ const HomePage = () => {
   return (
     <div>
       <h1>Trending today</h1>
-      {items.length > 0 && <MoviesList items={items} />}
-      {loading && <p>...loading</p>}
+      {loading && <Loader />}
+
       {error && <p>{error.message}</p>}
+
+      {items.length > 0 && <MoviesList items={items} />}
     </div>
   );
 };

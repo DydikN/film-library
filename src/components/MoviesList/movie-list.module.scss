@@ -1,0 +1,135 @@
+.content__item {
+  position: relative;
+  text-align: left;
+  font-weight: 500;
+  line-height: 1.167;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 280px;
+  min-height: 464px;
+
+  cursor: pointer;
+
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 8px 8px rgba(0, 0, 0, 0.06),
+    5px 5px 5px rgba(0, 0, 0, 0.16);
+
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    min-height: 495px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 395px;
+    min-height: 658px;
+  }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+}
+
+.content__img {
+  display: block;
+
+  width: 280px;
+  height: 420px;
+
+  object-fit: contain;
+
+  margin-bottom: 10px;
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    height: 504px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 395px;
+    height: 593px;
+  }
+}
+
+.box-description {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  cursor: pointer;
+
+  padding: 0 5px 5px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+    line-height: 1.333;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+.content__title {
+  color: #000000;
+  text-transform: uppercase;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.167;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+    line-height: 1.333;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+.content__text {
+  color: #ff6b08;
+  line-height: 1.333;
+}
+
+.content__popularity {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 50px;
+  height: 20px;
+
+  font-size: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 5px;
+  background-color: #ff6b08;
+  color: #ffffff;
+}
+.content__list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+    row-gap: 32px;
+  }
+}

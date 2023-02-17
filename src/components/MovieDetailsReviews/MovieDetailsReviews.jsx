@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { getMovieReviews } from 'api/films';
+import Loader from 'components/Loader/Loader';
+import styles from './movie-details-reviews.module.scss';
 
 const MovieDetailsReviews = () => {
   const [items, setItems] = useState([]);
@@ -28,18 +30,18 @@ const MovieDetailsReviews = () => {
   const elements = items.map(element => {
     const { id, author, created_at, content } = element;
     return (
-      <li key={id}>
-        <p>
+      <li key={id} className={styles.box__reviews}>
+        <p className={styles.reviews__name}>
           {created_at.slice(0, 10)} | "{author}"
         </p>
-        <p>{content}</p>
+        <p className={styles.reviews__text}>{content}</p>
       </li>
     );
   });
 
   return (
     <div>
-      {loading && <p>...loading</p>}
+      {loading && <Loader />}
       {error && <p>{error.message}</p>}
       {items.length > 0 ? (
         <ul>{elements}</ul>
