@@ -34,9 +34,7 @@ const Menu = () => {
           </nav>
         </div>
       </header>
-      <div className={styles.main}>
-        <Outlet />
-      </div>
+      <Outlet />
 
       <footer className={styles.footer}>
         <div className={styles.footer_container}>
