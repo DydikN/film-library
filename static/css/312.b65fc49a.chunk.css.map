@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/312.b65fc49a.chunk.css","mappings":"AAAA,kCACE,eACA,YAGF,6BAGE,SAFA,kBACA,QAEA","sources":["pages/NotFoundPage/not-found-page.module.scss"],"sourcesContent":[".container {\n  font-size: 24px;\n  margin: 25px;\n}\n\n.title {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n"],"names":[],"sourceRoot":""}
