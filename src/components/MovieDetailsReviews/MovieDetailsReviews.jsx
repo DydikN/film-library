@@ -44,7 +44,7 @@ const MovieDetailsReviews = () => {
       {loading && <Loader />}
       {error && <p>{error.message}</p>}
       {items.length > 0 ? (
-        <ul>{elements}</ul>
+        <ul className={styles.reviews__wrapper}>{elements}</ul>
       ) : (
         <p>We dont have any reviews for this movie</p>
       )}
