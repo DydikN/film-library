@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 
 import Loader from 'components/Loader/Loader';
 import styles from './movie-details.module.scss';
+import Notiflix from 'notiflix';
 
 import { getMovieDetails } from 'api/films';
 
@@ -50,11 +51,11 @@ const MovieDetails = () => {
   return (
     <div>
       {loading && <Loader />}
-      {error && <p>{error}</p>}
+      {error && Notiflix.Block(`${error.message} `)}
       <div>
         <div className={styles.buttton__wrapper}>
           <button type="button" className={styles.button} onClick={goBack}>
-            GoBack
+            Go Back
           </button>
         </div>
         <div className={styles.container}>
@@ -88,34 +89,33 @@ const MovieDetails = () => {
                 {genres && genres.map(genre => genre.name).join(' / ')}
               </span>
             </p>
+            <ul>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? styles.activeLink : styles.link
+                  }
+                  state={{ from }}
+                  to="cast"
+                >
+                  Cast
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? styles.activeLink : styles.link
+                  }
+                  state={{ from }}
+                  to="reviews"
+                >
+                  Reviews
+                </NavLink>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <ul>
-        <li>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? styles.activeLink : styles.link
-            }
-            state={{ from }}
-            to="cast"
-          >
-            Cast
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? styles.activeLink : styles.link
-            }
-            state={{ from }}
-            to="reviews"
-          >
-            Reviews
-          </NavLink>
-        </li>
-      </ul>
-
       <Outlet />
     </div>
   );

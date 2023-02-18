@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getMovieReviews } from 'api/films';
 import Loader from 'components/Loader/Loader';
 import styles from './movie-details-reviews.module.scss';
+import Notiflix from 'notiflix';
 
 const MovieDetailsReviews = () => {
   const [items, setItems] = useState([]);
@@ -42,11 +43,11 @@ const MovieDetailsReviews = () => {
   return (
     <div>
       {loading && <Loader />}
-      {error && <p>{error.message}</p>}
+      {error && Notiflix.Block(`${error.message} `)}
       {items.length > 0 ? (
         <ul className={styles.reviews__wrapper}>{elements}</ul>
       ) : (
-        <p>We dont have any reviews for this movie</p>
+        <p className={styles.text}>We dont have any reviews for this movie</p>
       )}
     </div>
   );

@@ -1,17 +1,23 @@
 import { useState } from 'react';
 import styles from './movie-search-form.module.scss';
 import PropTypes from 'prop-types';
+import Notiflix from 'notiflix';
 
 const MoviesSearchForm = ({ onSubmit }) => {
   const [search, setSearch] = useState('');
 
   const handleChange = ({ target }) => {
     const { value } = target;
-    setSearch(value.trim());
+    setSearch(value);
   };
 
   const handleFormSubmit = e => {
     e.preventDefault();
+    if (search.trim() === '') {
+      setSearch('');
+      return Notiflix.Notify.warning('Please write search query');
+    }
+
     onSubmit(search);
     setSearch('');
   };

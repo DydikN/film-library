@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 
 import { getMovieCredits } from 'api/films';
+import Notiflix from 'notiflix';
 
 import styles from './movie-details-cast.module.scss';
 
@@ -53,7 +54,7 @@ const MovieDetailsCast = () => {
   return (
     <div>
       {loading && <Loader />}
-      {error && <p>{error.message}</p>}
+      {error && Notiflix.Block(`${error.message} `)}
       <ul className={styles.cast__box__wrapper}>{elements}</ul>
     </div>
   );

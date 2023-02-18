@@ -66,10 +66,39 @@
 }
 
 .button {
-  cursor: pointer;
-  color: aliceblue;
+  position: fixed;
+  top: 13%;
+  left: 45%;
+  z-index: 103;
+
+  width: 70px;
+  height: 70px;
+  color: white;
   background-color: #ff6b08;
-  border-radius: 5%;
-  padding: 5px;
-  border-style: hidden;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
+  border-radius: 50%;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  box-shadow: 0 3px 3px 0 rgb(0 0 0 / 14%), 0 1px 7px 0 rgb(0 0 0 / 12%),
+    0 3px 1px -2px rgb(0 0 0 / 20%);
+
+  @media screen and (min-width: 768px) {
+    top: 5%;
+    left: 30%;
+  }
+
+  @media screen and (min-width: 1280px) {
+    top: 3%;
+    left: 20%;
+  }
+
+  &:hover {
+    background-color: white;
+
+    color: #ff6b08;
+    transform: scale(1.2);
+  }
 }

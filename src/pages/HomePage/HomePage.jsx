@@ -3,6 +3,7 @@ import { getMovies } from 'api/films';
 
 import MoviesList from 'components/MoviesList/MoviesList';
 import Loader from 'components/Loader/Loader';
+import Notiflix from 'notiflix';
 
 import styles from './home-page.module.scss';
 
@@ -33,7 +34,7 @@ const HomePage = () => {
       <h1 className={styles.title}>Trending today</h1>
       {loading && <Loader />}
 
-      {error && <p>{error.message}</p>}
+      {error && Notiflix.Block(`${error.message} `)}
 
       {items.length > 0 && <MoviesList items={items} />}
     </div>

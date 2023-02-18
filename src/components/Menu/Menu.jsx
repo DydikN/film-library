@@ -1,10 +1,21 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import ScrollToTop from 'react-scroll-to-top';
 
 import styles from './menu.module.scss';
 
 const Menu = () => {
   return (
     <div>
+      <ScrollToTop
+        smooth={true}
+        color="orange"
+        style={{
+          borderRadius: '50%',
+          width: '70px',
+          height: '70px',
+        }}
+      />
+
       <header className={styles.header}>
         <div className={styles.container}>
           <nav className={styles.nav}>

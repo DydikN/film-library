@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { getSearchMovie } from 'api/films';
+import Notiflix from 'notiflix';
 import Loader from 'components/Loader/Loader';
 
 import MoviesSearchForm from 'components/MoviesSearchForm/MoviesSearchForm';
@@ -40,7 +41,7 @@ const MoviesPage = () => {
     <div>
       <MoviesSearchForm onSubmit={handleChangeSearch} />
       {loading && <Loader />}
-      {error && error.message}
+      {error && Notiflix.Block(`${error.message} `)}
       {items.length > 0 && <MoviesList items={items} />}
     </div>
   );
